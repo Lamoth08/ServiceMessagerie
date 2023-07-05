@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceMessagerie>
+    <utilisateurs>
+        <utilisateur id="77 374 01 72">
+            <nom>Lamoth Mboup</nom>
+            <filConversation>
+                <conversation catégorie="individuel">
+                    <messages>
+                        <message id="1" expéditeur="77 374 01 72" recepteur="77 111 22 33" type="texte">
+                            <contenu>
+                                <texte>Salut comment vas-tu??</texte>
+                            </contenu>
+                        </message>
+
+                        <message expéditeur="77 111 22 33" recepteur="77 374 01 72" type="texte">
+                            <contenu>
+                                <texte>Bien et toi?</texte>
+                            </contenu>
+                            <citation id="1"/>
+                        </message>
+                    </messages>
+                </conversation>
+
+                <conversation catégorie="groupe">
+                    <participants>
+                        <participant nom="Seynabou DIOP" id ="77 222 33 44" statu="amis"/>
+                        <participant nom="" id ="77 222 33 44" statu="inconnu"/>
+                        <participant nom="Adja Rokhaya NIANG" id ="77 333 44 55" statu="amis"/>
+                        <participant nom="Fama Gaye" id ="77 444 55 66" statu="amis"/>
+                    </participants>
+                    <messages>
+                        <message id="1" expéditeur="77 374 01 72" recepteur="77 111 22 33" type="texte">
+                            <contenu>
+                                <texte>Salut comment vas-tu??</texte>
+                            </contenu>
+                        </message>
+
+                        <message expéditeur="77 111 22 33" recepteur="77 374 01 72" type="texte">
+                            <contenu>
+                                <texte>Bien et toi?</texte>
+                            </contenu>
+                            <citation id="1"/>
+                        </message>
+                    </messages>
+                </conversation>
+            </filConversation>
+        </utilisateur>
+    </utilisateurs>
+    <conversation>
+        <contacts>
+            <contact id="1">
+                <nom>Lamoth Mboup</nom>
+                <numero>1232322</numero>
+            </contact>
+            <contact id="2">
+                <nom>Oumar Sene</nom>
+                <numero>+1232132</numero>
+            </contact>
+        </contacts>
+
+        <messages>
+            <message id="1" expediteur="1" destinataire="2" catégorie="individuel" type="text">
+                <contenu>
+                    <texte>Salut Oumar, comment ça va ?</texte>
+                </contenu>
+            </message>
+
+            <message id="2" expediteur="2" destinataire="1" catégorie="individuel" type="text">
+                <contenu>
+                    <texte>Salut Lamoth,je vais bien et toi ?</texte>
+                </contenu>
+                <citation id="1"/>
+            </message>
+
+            <message id="3" catégorie="groupe" type="text">
+                <contenu>
+                    <texte>Bonjour à tous les membres du groupes</texte>
+                </contenu>
+            </message>
+
+            <message id="4" catégorie="groupe" type="fichier">
+                <contenu>
+                    <fichier>chemin/vers/le/fichier/audio.mp4</fichier>
+                </contenu>
+                <citation id="3"/>
+            </message>
+
+            <message id="5" catégorie="groupe" type="vocal">
+                <contenu>
+                    <vocal></vocal>
+                </contenu>
+                <citation id="1"/>
+            </message>
+        </messages>
+
+
+    </conversation>
+
+</serviceMessagerie>

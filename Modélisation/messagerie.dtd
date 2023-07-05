@@ -1,0 +1,95 @@
+<!ELEMENT serviceMessagerie (utilisateurs)>
+
+<!ELEMENT utilisateurs (utilisateur+)>
+
+<!ELEMENT utilisateur (contacts, discussions, appels)>
+<!ATTLIST utilisateur
+    id ID #REQUIRED
+    nom CDATA #REQUIRED
+    numero CDATA #REQUIRED
+    statut (Offline | Online) #REQUIRED>
+
+
+<!ELEMENT contacts (contact*)>
+
+<!ELEMENT contact (photo?, Groupes*)>
+<!ATTLIST contact
+    id ID #REQUIRED
+    nom CDATA #REQUIRED
+    numero CDATA #REQUIRED
+    statut (Offline | Online) #REQUIRED
+>
+
+<!ELEMENT photo (#PCDATA)>
+
+<!ELEMENT Groupes (Groupe+)>
+
+<!ELEMENT Groupe EMPTY>
+<!ATTLIST Groupe id IDREF #REQUIRED>
+
+
+<!ELEMENT discussions (discussion*)>
+
+<!ELEMENT discussion (correspondant?,infoGroupe?, messages)>
+<!ATTLIST discussion
+    categorie (individuelle | groupe) #REQUIRED
+    id ID #REQUIRED
+>
+
+<!ELEMENT correspondant EMPTY>
+<!ATTLIST correspondant id IDREF #REQUIRED
+>
+
+<!ELEMENT infoGroupe (membres)>
+<!ATTLIST infoGroupe
+    id ID #REQUIRED
+    nom CDATA #REQUIRED
+    description CDATA #REQUIRED
+    nombreMembres CDATA #REQUIRED
+>
+<!ELEMENT membres (membre*)>
+
+<!ELEMENT membre EMPTY>
+<!ATTLIST membre id IDREF #REQUIRED>
+
+<!ELEMENT messages (message*)>
+
+<!ELEMENT message (contenu, citation?)>
+<!ATTLIST message
+    id ID #REQUIRED
+    expediteur IDREF #REQUIRED
+    type CDATA #REQUIRED
+    timestamp CDATA #REQUIRED
+>
+
+<!ELEMENT contenu (texte?, fichier?, vocal?)>
+
+<!ELEMENT texte (#PCDATA)>
+<!ELEMENT fichier (#PCDATA)>
+<!ELEMENT vocal EMPTY>
+<!ATTLIST vocal
+    minutes CDATA #REQUIRED
+    secondes CDATA #REQUIRED
+>
+
+<!ELEMENT citation EMPTY>
+<!ATTLIST citation message IDREF #REQUIRED
+>
+
+<!ELEMENT appels (appel*)>
+
+<!ELEMENT appel (correspondant?,membres?, duree)>
+<!ATTLIST appel
+    type CDATA #REQUIRED
+    categorie CDATA #REQUIRED
+    chiffre (true | false) #REQUIRED
+>
+
+
+<!ELEMENT duree EMPTY>
+<!ATTLIST duree
+    heures CDATA #REQUIRED
+    minutes CDATA #REQUIRED
+>
+
+<!ELEMENT chiffre (#PCDATA)>

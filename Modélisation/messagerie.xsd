@@ -1,0 +1,213 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="serviceMessagerie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="utilisateurs" type="utilisateursType"/>
+      </xs:sequence>
+    </xs:complexType>
+    <!-- <xs:key name="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="contactKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/contacts/contact"/>
+      <xs:field xpath="@id"/>
+    </xs:keyref>
+    <xs:keyref name="correspondantKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/discussions/discussion/correspondant"/>
+      <xs:field xpath="@idref"/>
+    </xs:keyref>
+    <xs:keyref name="expediteurKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/discussions/discussion/messages/message"/>
+      <xs:field xpath="@expediteur"/>
+    </xs:keyref>
+    <xs:keyref name="messageKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/discussions/discussion/messages/message/citation"/>
+      <xs:field xpath="@message"/>
+    </xs:keyref>
+    <xs:keyref name="membreKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/discussions/discussion/infoGroupe/membres/membre"/>
+      <xs:field xpath="."/>
+    </xs:keyref>
+    <xs:keyref name="appelCorrespondantKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/appels/appel/correspondant"/>
+      <xs:field xpath="@idref"/>
+    </xs:keyref>
+    <xs:keyref name="appelMembreKeyRef" refer="utilisateurKey">
+      <xs:selector xpath="utilisateurs/utilisateur/appels/appel/membres/membre"/>
+      <xs:field xpath="."/>
+    </xs:keyref> -->
+  </xs:element>
+
+  <xs:complexType name="utilisateursType">
+    <xs:sequence>
+      <xs:element name="utilisateur" type="utilisateurType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilisateurType">
+    <xs:sequence>
+      <xs:element name="contacts" type="contactsType"/>
+      <xs:element name="discussions" type="discussionsType"/>
+      <xs:element name="appels" type="appelsType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="nom" type="xs:string" use="required"/>
+    <xs:attribute name="numero" type="xs:string" use="required"/>
+    <xs:attribute name="statut" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Offline"/>
+          <xs:enumeration value="Online"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="contactsType">
+    <xs:sequence>
+      <xs:element name="contact" type="contactType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contactType">
+    <xs:sequence>
+      <xs:element name="photo" type="xs:string" minOccurs="0"/>
+      <xs:element name="Groupes" type="GroupesType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="nom" type="xs:string" use="required"/>
+    <xs:attribute name="numero" type="xs:string" use="required"/>
+    <xs:attribute name="statut" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Offline"/>
+          <xs:enumeration value="Online"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="GroupesType">
+    <xs:sequence>
+      <xs:element name="Groupe" type="groupeType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="groupeType">
+  <xs:attribute name="id" type="xs:IDREF" />
+</xs:complexType>
+
+
+  <xs:complexType name="discussionsType">
+    <xs:sequence>
+      <xs:element name="discussion" type="discussionType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="discussionType">
+    <xs:sequence>
+      <xs:element name="correspondant" type="correspondantType" minOccurs="0"/>
+      <xs:element name="infoGroupe" type="infoGroupeType" minOccurs="0"/>
+      <xs:element name="messages" type="messagesType"/>
+    </xs:sequence>
+    <xs:attribute name="categorie" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="individuelle"/>
+          <xs:enumeration value="groupe"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="correspondantType">
+    <xs:attribute name="id" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="infoGroupeType">
+    <xs:sequence>
+      <xs:element name="membres" type="membresType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="nom" type="xs:string" use="required"/>
+    <xs:attribute name="description" type="xs:string" use="required"/>
+    <xs:attribute name="nombreMembres" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="membresType">
+    <xs:sequence>
+      <xs:element name="membre" type="membreType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="membreType">
+    <xs:attribute name="id" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="messagesType">
+    <xs:sequence>
+      <xs:element name="message" type="messageType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageType">
+    <xs:sequence>
+      <xs:element name="contenu" type="contenuType"/>
+      <xs:element name="citation" type="citationType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="expediteur" type="xs:IDREF" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="timestamp" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="contenuType">
+    <xs:sequence>
+      <xs:element name="texte" type="xs:string" minOccurs="0"/>
+      <xs:element name="fichier" type="xs:string" minOccurs="0"/>
+      <xs:element name="vocal" type="vocalType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vocalType">
+    <xs:attribute name="minutes" type="xs:string" use="required"/>
+    <xs:attribute name="secondes" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="citationType">
+    <xs:attribute name="message" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="appelsType">
+    <xs:sequence>
+      <xs:element name="appel" type="appelType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="appelType">
+    <xs:sequence>
+      <xs:element name="correspondant" type="correspondantType" minOccurs="0"/>
+      <xs:element name="membres" type="membresType" minOccurs="0"/>
+      <xs:element name="duree" type="dureeType"/>
+    </xs:sequence>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="categorie" type="xs:string" use="required"/>
+    <xs:attribute name="chiffre" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="dureeType">
+    <xs:attribute name="heures" type="xs:string" use="required"/>
+    <xs:attribute name="minutes" type="xs:string" use="required"/>
+  </xs:complexType>
+
+</xs:schema>
