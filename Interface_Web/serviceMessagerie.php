@@ -5,8 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $numero = $_POST['numero'];
 
     // Charger le fichier XML existant
-    $xml = simplexml_load_file('../Modélisation/serviceMessagerie.xml');
+    
 
+    $xml = simplexml_load_file('../Modélisation/serviceMessagerie.xml');
+    if($xml){
+        echo "Le document XML a bien été chargé.";
+    }
     $utilisateur = $xml->xpath("/serviceMessagerie/utilisateurs/utilisateur[@id='u1']")[0];
 
     // Créer un nouvel élément contact
@@ -16,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nouveauContact->addAttribute('numero', $numero);
 
     // Enregistrer les modifications dans le fichier XML
-    $xml->saveXML('../Modélisation/serviceMessagerie.xml');
+    $xml->asXML('../Modélisation/serviceMessagerie.xml');
 
     // Rediriger vers la page index.php
-    header('Location: index.php');
+    header('Location: contacts.php');
 }
 ?>
 

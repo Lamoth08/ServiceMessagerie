@@ -2,55 +2,58 @@
 
 <!ELEMENT utilisateurs (utilisateur+)>
 
-<!ELEMENT utilisateur (contacts, discussions, appels)>
+<!ELEMENT utilisateur (contacts, Groupes, discussions, appels)>
 <!ATTLIST utilisateur
     id ID #REQUIRED
     nom CDATA #REQUIRED
     numero CDATA #REQUIRED
-    statut (Offline | Online) #REQUIRED>
+    statut (Offline | Online) #REQUIRED
+    photo CDATA #REQUIRED>
 
 
 <!ELEMENT contacts (contact*)>
 
-<!ELEMENT contact (photo?, Groupes*)>
-<!ATTLIST contact
-    id ID #REQUIRED
-    nom CDATA #REQUIRED
-    numero CDATA #REQUIRED
-    statut (Offline | Online) #REQUIRED
+<!ELEMENT contact (commonGroups*)>
+<!ATTLIST contact id IDREF #REQUIRED
 >
 
 <!ELEMENT photo (#PCDATA)>
 
-<!ELEMENT Groupes (Groupe+)>
+<!ELEMENT commonGroups (commonGroup+)>
+<!ELEMENT commonGroup EMPTY>
+<!ATTLIST commonGroup id IDREF #REQUIRED>
 
-<!ELEMENT Groupe EMPTY>
-<!ATTLIST Groupe id IDREF #REQUIRED>
+<!ELEMENT Groupes (Groupe*)>
+<!ELEMENT Groupe (membres)>
+<!ATTLIST Groupe
+    id ID #REQUIRED
+    nom CDATA #REQUIRED
+    description CDATA #REQUIRED
+    nombreMembres CDATA #REQUIRED
+>
 
+
+<!ELEMENT membres (membre+)>
+
+<!ELEMENT membre EMPTY>
+<!ATTLIST membre id IDREF #REQUIRED>
 
 <!ELEMENT discussions (discussion*)>
 
-<!ELEMENT discussion (correspondant?,infoGroupe?, messages)>
+<!ELEMENT discussion (discuGroupe?,correspondant?,infoGroupe?, messages)>
 <!ATTLIST discussion
     categorie (individuelle | groupe) #REQUIRED
     id ID #REQUIRED
+>
+
+<!ELEMENT discuGroupe EMPTY>
+<!ATTLIST discuGroupe id IDREF #REQUIRED
 >
 
 <!ELEMENT correspondant EMPTY>
 <!ATTLIST correspondant id IDREF #REQUIRED
 >
 
-<!ELEMENT infoGroupe (membres)>
-<!ATTLIST infoGroupe
-    id ID #REQUIRED
-    nom CDATA #REQUIRED
-    description CDATA #REQUIRED
-    nombreMembres CDATA #REQUIRED
->
-<!ELEMENT membres (membre*)>
-
-<!ELEMENT membre EMPTY>
-<!ATTLIST membre id IDREF #REQUIRED>
 
 <!ELEMENT messages (message*)>
 
@@ -80,6 +83,7 @@
 
 <!ELEMENT appel (correspondant?,membres?, duree)>
 <!ATTLIST appel
+    id ID #REQUIRED
     type CDATA #REQUIRED
     categorie CDATA #REQUIRED
     chiffre (true | false) #REQUIRED
@@ -89,7 +93,4 @@
 <!ELEMENT duree EMPTY>
 <!ATTLIST duree
     heures CDATA #REQUIRED
-    minutes CDATA #REQUIRED
->
-
-<!ELEMENT chiffre (#PCDATA)>
+    minutes CDATA #REQUIRED>

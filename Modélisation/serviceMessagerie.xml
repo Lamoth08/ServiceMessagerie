@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<serviceMessagerie xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="messagerie.xsd">
+ <serviceMessagerie xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="messagerie.xsd"> 
+<!-- <!DOCTYPE serviceMessagerie SYSTEM "messagerie.dtd"> 
 
-<!--<!DOCTYPE serviceMessagerie SYSTEM "messagerie.dtd">--> 
-
+<serviceMessagerie> -->
     <utilisateurs> 
-        <utilisateur id="u1" nom="Lamoth Mboup" numero="7711122" statut="Online">
+        <utilisateur id="u1" nom="Lamoth Mboup" numero="7711122" statut="Online" photo="lamoth.jpg">
             <contacts>
-                <contact id="c1" nom="Oumar" numero="7745098" statut="Online">
-                  <photo>oumar.jpg</photo>
-                  <Groupes>
-                    <Groupe id="g1"/>
-                    <Groupe id="g2"/>
-                  </Groupes>
+                <contact id="u1">
+                  <commonGroups>
+                    <commonGroup id="g1"/>
+                    <commonGroup id="g2"/>
+                  </commonGroups>
                 </contact>
-                <contact id="c2" nom="Seynabou" numero="7654345" statut="Offline">
-                  <photo>seynabou.jpg</photo>
-                </contact>
-                <contact id="c3" nom="Rokhaya" numero="7567789" statut="Online">
-                  <photo>rokhaya.jpg</photo>
-                </contact>
-                <contact id="c4" nom="Fama" numero="7737401" statut="Offline">
-                  <photo>fama.jpg</photo>
+                <contact id="u3">
+                    <commonGroups>
+                        <commonGroup id="g1"/>
+                    </commonGroups>   
                 </contact>
             </contacts>
 
+            <Groupes>
+                <Groupe id="g1" nom="les anciens de l'esp" description="ce groupe regroupe les alumnis de l'esp" nombreMembres="3">
+                    <membres>
+                        <membre id="u1" />
+                        <membre id="u2" />
+                        <membre id="u3"/>
+                    </membres>
+                </Groupe>
+                <Groupe id="g2" nom="otakus" description="manga life" nombreMembres="3">
+                    <membres>
+                        <membre id="u2" />
+                        <membre id="u1" />
+                        <membre id="u3"/>
+                    </membres>
+                </Groupe>
+            </Groupes>
+
             <discussions>
                 <discussion categorie="individuelle" id="d1">
-                    <correspondant id="c3"/>
+                    <correspondant id="u3"/>
                     <messages>
-                        <message id="m1" expediteur="c3" type="texte" timestamp="2023-06-26T10:00:00">
+                        <message id="m1" expediteur="u3" type="texte" timestamp="2023-06-26T10:00:00">
                             <contenu>
                                 <texte>Salut comment vas-tu??</texte>    
                             </contenu>
@@ -59,155 +71,144 @@
                             <contenu>
                                <vocal minutes="00" secondes="15" />
                             </contenu>
-                            <citation message="m2"/>
+                            <citation message="m4"/>
                         </message>
                     </messages>
                 </discussion>
                 
                 <discussion categorie="groupe" id="d3">
-                    <infoGroupe id="g1" nom="les anciens de l'esp" description="ce groupe regroupe les alumnis de l'esp" nombreMembres="56">
-                        <membres>
-                            <membre id="u2" />
-                            <membre id="c2" />
-                            <membre id="c3"/>
-                            <membre id="c4"/>
-                        </membres>
-                    </infoGroupe>
-    
+                    <discuGroupe id="g1"/>
                     <messages>
-                        <message id="m6" expediteur="c4" type="texte" timestamp="2023-06-27T11:00:00">
+                        <message id="m6" expediteur="u3" type="texte" timestamp="2023-06-26T10:10:00">
                             <contenu>
                                 <texte>Salut, quelqu'un pour m'envoyer le projet de xml</texte>
                             </contenu>
                         </message>
-                        <message id="m7" expediteur="c3" type="fichier" timestamp="2023-06-2T11:10:00">
+                        <message id="m7" expediteur="u2" type="fichier" timestamp="2023-06-2T11:10:00">
                             <contenu>
                                 <fichier>/home/lamoth/Bureau/projetxml.pdf</fichier>
                             </contenu>
-                            <citation message="m1"/>
+                            <citation message="m7"/>
                         </message>
                     </messages>
                 </discussion>
-
-                <discussion categorie="groupe" id="d4">
-                    <infoGroupe id="g2" nom="otakus" description="manga life" nombreMembres="6">
-                        <membres>
-                            <membre id="u2" />
-                            <membre id="c2" />
-                            <membre id="c3"/>
-                            <membre id="c4"/>
-                        </membres>
-                    </infoGroupe>
-                    <messages></messages>
-                </discussion>
-            </discussions>
-            <appels>
-                <appel type="vocal" categorie="groupe" chiffre="true">
+        </discussions>
+        <appels>
+                <appel id="a1" type="vocal" categorie="groupe" chiffre="true">
                     <membres>
                         <membre id="u2" />
-                        <membre id="c2" />
-                        <membre id="c3"/>
-                        <membre id="c4"/>
+                        <membre id="u3"/>
                     </membres>
                     <duree heures="00" minutes="15" />
                 </appel>
-                <appel type="vocal" categorie="individuelle" chiffre="true">
-                    <correspondant id="c2" />
+                <appel id="a2" type="vocal" categorie="individuelle" chiffre="true">
+                    <correspondant id="u2" />
                     <duree heures="00" minutes="15" />
                 </appel>
-                <appel type="video" categorie="groupe" chiffre="true">
+                <appel id="a3" type="video" categorie="groupe" chiffre="true">
                     <membres>
                         <membre id="u2" />
-                        <membre id="c2" />
-                        <membre id="c3"/>
-                        <membre id="c4"/>
+                        <membre id="u3"/>
                     </membres>
                     <duree heures="01" minutes="15" />
                 </appel>
-                <appel type="video" categorie="individuelle" chiffre="true">
-                    <correspondant id="c3" />
+                <appel id="a4" type="video" categorie="individuelle" chiffre="true">
+                    <correspondant id="u3" />
                     <duree heures="00" minutes="15" />
                 </appel>
             </appels>
         </utilisateur>
-        
-        <utilisateur id="u2" nom="Utilisateur 2" numero="7722334" statut="Offline">
+
+        <utilisateur id="u2" nom="Oumar Sene" numero="7745098" statut="Online" photo="oumar.jpeg">
             <contacts>
-                <contact id="c5" nom="Aliou" numero="7890123" statut="Online">
-                  <photo>aliou.jpg</photo>
-                  <Groupes>
-                    <Groupe id="g3"/>
-                    <Groupe id="g4"/>
-                  </Groupes>
+                <contact id="u1">
+                  <commonGroups>
+                    <commonGroup id="g2"/>
+                  </commonGroups>
                 </contact>
-                <contact id="c6" nom="Aissatou" numero="7012345" statut="Online">
-                  <photo>aissatou.jpg</photo>
+                <contact id="u3" >
+                    <commonGroups>
+                        <commonGroup id="g2"/>
+                    </commonGroups>
                 </contact>
             </contacts>
+
+            <Groupes></Groupes>
+
             <discussions>
-                <discussion categorie="individuelle" id="d5">
-                    <correspondant id="c5"/>
+                <discussion categorie="individuelle" id="d4">
+                    <correspondant id="u3"/>
                     <messages>
-                        <message id="m8" expediteur="c5" type="texte" timestamp="2023-06-27T10:00:00">
+                        <message id="m8" expediteur="u3" type="texte" timestamp="2023-06-26T10:00:00">
                             <contenu>
-                                <texte>Bonjour, comment ça va?</texte>    
+                                <texte>Salut comment vas-tu??</texte>    
                             </contenu>
                         </message>
-                        <message id="m9" expediteur="u2" type="texte" timestamp="2023-06-27T10:05:00">
+                        <message id="m9" expediteur="u1" type="texte" timestamp="2023-06-26T10:05:00">
                             <contenu>
-                                <texte>Ça va bien, merci!</texte>
+                                <texte>Bien et toi?</texte>
                             </contenu>
                             <citation message="m8"/>
                         </message>
                     </messages>
                 </discussion>
-                <discussion categorie="groupe" id="d6">
-                    <infoGroupe id="g3" nom="Collègues" description="Groupe des collègues de travail" nombreMembres="12">
-                        <membres>
-                            <membre id="u2" />
-                            <membre id="c5" />
-                            <membre id="c6"/>
-                        </membres>
-                    </infoGroupe>
-    
-                    <messages>
-                        <message id="m10" expediteur="c6" type="texte" timestamp="2023-06-28T11:00:00">
-                            <contenu>
-                                <texte>Bonne nouvelle, notre projet a été accepté!</texte>
-                            </contenu>
-                        </message>
-                    </messages>
-                </discussion>
-
-                <discussion categorie="groupe" id="d7">
-                    <infoGroupe id="g4" nom="Amis" description="Groupe des amis proches" nombreMembres="5">
-                        <membres>
-                            <membre id="u2" />
-                            <membre id="c5" />
-                            <membre id="c6"/>
-                        </membres>
-                    </infoGroupe>
+                <discussion categorie="groupe" id="d5">
                     <messages></messages>
                 </discussion>
             </discussions>
             <appels>
-                <appel type="vocal" categorie="groupe" chiffre="true">
+                    <appel id="a5" type="vocal" categorie="groupe" chiffre="true">
+                        <membres>
+                            <membre id="u1" />
+                            <membre id="u2" />
+                            <membre id="u3"/>
+                        </membres>
+                        <duree heures="00" minutes="15" />
+                    </appel>
+            </appels>
+        </utilisateur>
+
+        <utilisateur id="u3" nom="Fama Diop" numero="7567789" statut="Online" photo="fama.jpeg">
+            <contacts>
+                <contact id="u1">
+                    <commonGroups>
+                        <commonGroup id="g1"/>
+                    </commonGroups>
+                </contact>
+                <contact id="u2">
+                </contact>
+            </contacts>
+            <Groupes></Groupes>
+
+            <discussions>
+                <discussion categorie="individuelle" id="d6">
+                    <correspondant id="u1"/>
+                    <messages>
+                        <message id="m10" expediteur="u1" type="texte" timestamp="2023-06-26T10:00:00">
+                            <contenu>
+                                <texte>Salut comment ça va ?</texte>
+                            </contenu>
+                        </message>
+                        <message id="m11" expediteur="u3" type="texte" timestamp="2023-06-26T10:05:00">
+                            <contenu>
+                                <texte>Ça va bien, merci !</texte>
+                            </contenu>
+                            <citation message="m10"/>
+                        </message>
+                    </messages>
+                </discussion>
+
+            </discussions>
+            <appels>
+                <appel id="a6" type="vocal" categorie="groupe" chiffre="true">
                     <membres>
-                        <membre id="u2" />
-                        <membre id="c5" />
-                        <membre id="c6"/>
+                        <membre id="u2"/>
+                        <membre id="u1"/>
                     </membres>
-                    <duree heures="00" minutes="20" />
-                </appel>
-                <appel type="video" categorie="groupe" chiffre="true">
-                    <membres>
-                        <membre id="u2" />
-                        <membre id="c5" />
-                        <membre id="c6"/>
-                    </membres>
-                    <duree heures="01" minutes="30" />
+                    <duree heures="00" minutes="15"/>
                 </appel>
             </appels>
         </utilisateur>
+
     </utilisateurs>
 </serviceMessagerie>
